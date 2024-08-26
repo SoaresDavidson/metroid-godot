@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsi6hkfaxdsn4"]
+
+[ext_resource type="Texture2D" uid="uid://cufpu1a25h6s4" path="res://assets/Main-Deck.png" id="1_q6ge3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alr4j"]
+size = Vector2(254, 10)
+
+[node name="Main-deck" type="Sprite2D"]
+position = Vector2(128, 81)
+texture = ExtResource("1_q6ge3")
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 73)
+shape = SubResource("RectangleShape2D_alr4j")

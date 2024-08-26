@@ -1,0 +1,207 @@
+[gd_scene load_steps=24 format=3 uid="uid://d05o3k7mkcs74"]
+
+[ext_resource type="Script" path="res://Player/samus.gd" id="1_f0yg4"]
+[ext_resource type="Texture2D" uid="uid://mx72vlwul6ds" path="res://assets/Game Boy Advance - Metroid Fusion - Samus Aran.png" id="1_o5a17"]
+
+[sub_resource type="Animation" id="Animation_sqxrn"]
+resource_name = "IdleLeft"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_yopub"]
+resource_name = "IdleRight"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_buybg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Running:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_jakkc"]
+resource_name = "Running"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Running:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_7aeux"]
+resource_name = "RunningLeft"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Running:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 8, 7, 6, 5, 4, 3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_jl2qw"]
+resource_name = "RunningRight"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Running:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8477d"]
+_data = {
+"IdleLeft": SubResource("Animation_sqxrn"),
+"IdleRight": SubResource("Animation_yopub"),
+"RESET": SubResource("Animation_buybg"),
+"Running": SubResource("Animation_jakkc"),
+"RunningLeft": SubResource("Animation_7aeux"),
+"RunningRight": SubResource("Animation_jl2qw")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1qaba"]
+animation = &"IdleLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_21asc"]
+animation = &"IdleRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d7drg"]
+animation = &"IdleRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_iwcwi"]
+auto_triangles = false
+blend_point_0/node = SubResource("AnimationNodeAnimation_1qaba")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_21asc")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_d7drg")
+blend_point_2/pos = Vector2(1, 0)
+triangles = PackedInt32Array(0, 1, 2)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mjan6"]
+animation = &"RunningLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eqrmr"]
+animation = &"RunningRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1t0t4"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_tg18n"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_mjan6")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_eqrmr")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_1t0t4")
+blend_point_2/pos = Vector2(0, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8x0l8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1oxlj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fpiy0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6a30i"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_klqk0"]
+states/End/position = Vector2(817, 94)
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_iwcwi")
+states/Idle/position = Vector2(462, 99)
+states/Running/node = SubResource("AnimationNodeBlendSpace2D_tg18n")
+states/Running/position = Vector2(607, 99)
+states/Start/position = Vector2(270, 99)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_8x0l8"), "Idle", "Running", SubResource("AnimationNodeStateMachineTransition_1oxlj"), "Running", "Idle", SubResource("AnimationNodeStateMachineTransition_fpiy0"), "Running", "End", SubResource("AnimationNodeStateMachineTransition_6a30i")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pk38w"]
+size = Vector2(20, 0)
+
+[node name="Samus" type="CharacterBody2D"]
+script = ExtResource("1_f0yg4")
+
+[node name="Running" type="Sprite2D" parent="."]
+texture = ExtResource("1_o5a17")
+hframes = 20
+frame = 8
+region_enabled = true
+region_rect = Rect2(0, 656, 800, 38)
+
+[node name="Idle" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_o5a17")
+hframes = 20
+vframes = 94
+region_enabled = true
+region_rect = Rect2(0, 0, 800, 4607)
+region_filter_clip_enabled = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
+libraries = {
+"": SubResource("AnimationLibrary_8477d")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_klqk0")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Running/blend_position = Vector2(-0.996839, -0.0106384)
+
+[node name="Feet" type="CollisionShape2D" parent="."]
+position = Vector2(3, 14)
+shape = SubResource("RectangleShape2D_pk38w")
