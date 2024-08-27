@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vohvkjwb06av"
-path="res://.godot/imported/Game Boy Advance - Metroid Fusion - Samus Aran-Sheet.png-ef5f8e95c441eb80bdf432c93c497c51.ctex"
+uid="uid://dneo6ln21exny"
+path="res://.godot/imported/SamusAimingDIagonalDown.png-22d26b3189072faab426c85f698423ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Game Boy Advance - Metroid Fusion - Samus Aran-Sheet.png"
-dest_files=["res://.godot/imported/Game Boy Advance - Metroid Fusion - Samus Aran-Sheet.png-ef5f8e95c441eb80bdf432c93c497c51.ctex"]
+source_file="res://assets/Samus/SamusAimingDIagonalDown.png"
+dest_files=["res://.godot/imported/SamusAimingDIagonalDown.png-22d26b3189072faab426c85f698423ac.ctex"]
 
 [params]
 

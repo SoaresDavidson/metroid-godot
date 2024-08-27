@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw86tu0dbwpk8"
-path="res://.godot/imported/Game Boy Advance - Metroid Fusion.png-13a54084e735d7986f39d1187e033570.ctex"
+uid="uid://dcj3i1nqttko8"
+path="res://.godot/imported/RunningSheet.png-a297e8ef0beb6490cbdae25d8e4edd5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Game Boy Advance - Metroid Fusion.png"
-dest_files=["res://.godot/imported/Game Boy Advance - Metroid Fusion.png-13a54084e735d7986f39d1187e033570.ctex"]
+source_file="res://assets/Samus/RunningSheet.png"
+dest_files=["res://.godot/imported/RunningSheet.png-a297e8ef0beb6490cbdae25d8e4edd5b.ctex"]
 
 [params]
 

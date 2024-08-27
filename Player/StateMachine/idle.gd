@@ -4,32 +4,41 @@ class_name Idle
 @onready var animated_sprite = $"../../animatedSprite"
 
 var direction: float
+var facing:int = -1
 
 func Enter():
-	print("cu")
-	
-func Update(_delta:float):
-	pass
-	
+	#freia
+	samus.velocity.x = 0
+	#checa qual a animação correta para tocar
+	checkAnimation()
+
 func PhysicsUpdate(_delta:float):
-	var direction = Input.get_axis("left", "right")
-	samus.velocity.x = move_toward(samus.velocity.x, 0, samus.friction * _delta)
-	if samus.previous_animation == "RunningLeft":
-		animated_sprite.play("IdleLeft")
-	else:
-		animated_sprite.play("IdleRight")
+	direction = Input.get_axis("left", "right")
+	
+	transitionCrouched()
+		
+	transitionWalk()
+	
+func Exit():
+	#guarda a ultima animação do state
+	samus.previous_animation = animated_sprite.animation
+	#guarda o nome do ultimo state
+	samus.previous_state = name
+	
+func transitionWalk():
+	if direction != facing and direction != 0:
+		transitioned.emit(self, "Turn")
 	if direction:
 		transitioned.emit(self, "Walk")
-func Exit():
-	pass
 
-func turningAnimation(direction: float) -> void:
-	var hold
-	if not hold:
-		hold = direction
-	if hold != direction and direction != 0:
-		if hold < 0:
-			animated_sprite.play("TurnLeft")
-		if hold > 0:
-			animated_sprite.play("TurnRight")
-		hold = direction
+func checkAnimation():
+	if "Left" in samus.previous_animation:
+		facing = -1
+		animated_sprite.play("IdleLeft")
+	if "Right" in samus.previous_animation:
+		facing = 1
+		animated_sprite.play("IdleRight")
+
+func transitionCrouched():
+	if Input.is_action_just_pressed("down"):
+		transitioned.emit(self, "Crouched")

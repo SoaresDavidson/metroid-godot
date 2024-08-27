@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bi8ldjji7jenv"]
 
-[ext_resource type="PackedScene" uid="uid://dofnib7bxww22" path="res://Player/Samus2.tscn" id="1_jjb7v"]
+[ext_resource type="PackedScene" uid="uid://bxfkfgejq7opq" path="res://Player/Samus.tscn" id="1_qinfg"]
 [ext_resource type="PackedScene" uid="uid://dsi6hkfaxdsn4" path="res://scenes/main_deck.tscn" id="2_13o7r"]
 
 [node name="plataforma_teste" type="Node2D"]
 
-[node name="Samus" parent="." instance=ExtResource("1_jjb7v")]
+[node name="Samus" parent="." instance=ExtResource("1_qinfg")]
 z_index = 1
-position = Vector2(137, 40)
+position = Vector2(91, 60)
 
 [node name="Main-deck" parent="." instance=ExtResource("2_13o7r")]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dofnib7bxww22"]
+[gd_scene load_steps=46 format=3 uid="uid://dofnib7bxww22"]
 
 [ext_resource type="Texture2D" uid="uid://vohvkjwb06av" path="res://assets/Game Boy Advance - Metroid Fusion - Samus Aran-Sheet.png" id="1_23nno"]
 [ext_resource type="Script" path="res://Player/samus_2.gd" id="1_d35qc"]
@@ -6,6 +6,31 @@
 [ext_resource type="Script" path="res://Player/StateMachine/state_machine.gd" id="4_niy1a"]
 [ext_resource type="Script" path="res://Player/StateMachine/walk.gd" id="5_hh0eq"]
 [ext_resource type="Script" path="res://Player/StateMachine/turn.gd" id="6_q13ig"]
+[ext_resource type="Script" path="res://Player/StateMachine/crouched.gd" id="7_x0p4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgvpe"]
+atlas = ExtResource("1_23nno")
+region = Rect2(1088, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luky4"]
+atlas = ExtResource("1_23nno")
+region = Rect2(1312, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c65kq"]
+atlas = ExtResource("1_23nno")
+region = Rect2(1280, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxoog"]
+atlas = ExtResource("1_23nno")
+region = Rect2(1120, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jksjd"]
+atlas = ExtResource("1_23nno")
+region = Rect2(1120, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okb3v"]
+atlas = ExtResource("1_23nno")
+region = Rect2(1280, 0, 32, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vhkj2"]
 atlas = ExtResource("1_23nno")
@@ -131,6 +156,44 @@ region = Rect2(128, 0, 32, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dgvpe")
+}],
+"loop": true,
+"name": &"CrouchedLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luky4")
+}],
+"loop": true,
+"name": &"CrouchedRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c65kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxoog")
+}],
+"loop": false,
+"name": &"CrouchedTurnLeft",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jksjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okb3v")
+}],
+"loop": false,
+"name": &"CrouchedTurnRight",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vhkj2")
 }, {
 "duration": 1.0,
@@ -236,7 +299,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"TurnLeft",
-"speed": 3.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -247,7 +310,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"TurnRight",
-"speed": 6.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgev2"]
@@ -261,7 +324,7 @@ speed = 150.0
 
 [node name="animatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_55sv2")
-animation = &"TurnLeft"
+animation = &"CrouchedTurnRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 17)
@@ -279,5 +342,8 @@ script = ExtResource("5_hh0eq")
 
 [node name="Turn" type="Node" parent="FSM"]
 script = ExtResource("6_q13ig")
+
+[node name="Crouched" type="Node" parent="FSM"]
+script = ExtResource("7_x0p4c")
 
 [connection signal="animation_finished" from="animatedSprite" to="." method="_on_samus_animations_animation_finished"]

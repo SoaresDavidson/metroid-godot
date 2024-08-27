@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgraknsobacrd"
-path="res://.godot/imported/SamusSpriteSheet.png-33d69a37a5acb2e081d01496350c61e3.ctex"
+uid="uid://darnvtqs5qkn"
+path="res://.godot/imported/SamusCrouched.png-1de610f8bb93604b83f0d6e679a32dae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SamusSpriteSheet.png"
-dest_files=["res://.godot/imported/SamusSpriteSheet.png-33d69a37a5acb2e081d01496350c61e3.ctex"]
+source_file="res://assets/Samus/SamusCrouched.png"
+dest_files=["res://.godot/imported/SamusCrouched.png-1de610f8bb93604b83f0d6e679a32dae.ctex"]
 
 [params]
 
