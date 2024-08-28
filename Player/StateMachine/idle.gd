@@ -15,7 +15,7 @@ func Enter():
 func PhysicsUpdate(_delta:float):
 	direction = Input.get_axis("left", "right")
 	
-	AimUp()
+	AimUp("AimUpLeft", "AimUpRight", name)
 	
 	transitionCrouched()
 		
@@ -37,14 +37,3 @@ func transitionWalk():
 func transitionCrouched():
 	if Input.is_action_just_pressed("down"):
 		transitioned.emit(self, "Crouched")
-
-func AimUp():
-	if Input.is_action_pressed("up"):
-		if "Left" in animated_sprite.animation:
-			facing = -1
-			animated_sprite.play("AimUpLeft")
-		if "Right" in animated_sprite.animation:
-			facing = 1
-			animated_sprite.play("AimUpRight")
-	else:
-		transitioned.emit(self, "idle")

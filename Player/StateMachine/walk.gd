@@ -9,14 +9,13 @@ func Enter():
 		checkAnimation("RunningLeft", "RunningRight")
 	
 func PhysicsUpdate(_delta:float):
-	
 	direction = Input.get_axis("left", "right")
-	
+
 	
 	#função responsável pelo movimento,presente na classe pai:State 
 	move(direction, _delta)
 	
-	AimUp()
+	AimUp("AimUpDiagonalLeft", "AimUpDiagonalRight", name)
 	#transiciona pra Idle
 	transitionIdle()
 		
@@ -28,16 +27,5 @@ func Exit():
 	
 func transitionIdle():
 	#se não tiver input em direction(direction = 0) transiciona pra idle
-	if not direction:
+	if not direction or direction != facing:
 		transitioned.emit(self, "idle")
-
-func AimUp():
-	if Input.is_action_pressed("up"):
-		if "Left" in animated_sprite.animation:
-			facing = -1
-			animated_sprite.play("AimUpDiagonalLeft")
-		if "Right" in animated_sprite.animation:
-			facing = 1
-			animated_sprite.play("AimUpDiagonalRight")
-	else:
-		transitioned.emit(self, "Walk")

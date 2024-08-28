@@ -32,3 +32,15 @@ func checkAnimation(animationLeft:String, animationRight:String):
 	if "Right" in samus.previous_animation:
 		facing = 1
 		animated_sprite.play(animationRight)
+		
+func AimUp(animationLeft:String, animationRight:String, state:String):
+	
+	if Input.is_action_pressed("up"):
+		if "Left" in animated_sprite.animation:
+			facing = -1
+			animated_sprite.play(animationLeft)
+		if "Right" in animated_sprite.animation:
+			facing = 1
+			animated_sprite.play(animationRight)
+	else:
+		transitioned.emit(self, state)
