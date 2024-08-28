@@ -28,7 +28,6 @@ func Exit():
 	samus.previous_state = name
 	
 	
-	
 func transitionWalk():
 	if direction != facing and direction != 0:
 		transitioned.emit(self, "Turn")
