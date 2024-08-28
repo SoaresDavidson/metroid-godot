@@ -128,29 +128,29 @@ region = Rect2(72, 0, 36, 48)
 atlas = ExtResource("2_jyne1")
 region = Rect2(108, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iupb1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_axrqn"]
 atlas = ExtResource("2_sfelu")
-region = Rect2(64, 0, 32, 48)
+region = Rect2(72, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_je0m7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix2m1"]
 atlas = ExtResource("2_sfelu")
-region = Rect2(288, 0, 32, 48)
+region = Rect2(324, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cl88"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cn1b"]
 atlas = ExtResource("2_sfelu")
-region = Rect2(256, 0, 32, 48)
+region = Rect2(288, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtp1m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_harob"]
 atlas = ExtResource("2_sfelu")
-region = Rect2(96, 0, 32, 48)
+region = Rect2(108, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rcnc1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq1t4"]
 atlas = ExtResource("2_sfelu")
-region = Rect2(96, 0, 32, 48)
+region = Rect2(108, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dhub6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cf0f"]
 atlas = ExtResource("2_sfelu")
-region = Rect2(256, 0, 32, 48)
+region = Rect2(288, 0, 36, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0csxc"]
 atlas = ExtResource("3_160aw")
@@ -393,7 +393,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iupb1")
+"texture": SubResource("AtlasTexture_axrqn")
 }],
 "loop": true,
 "name": &"CrouchedLeft",
@@ -401,7 +401,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_je0m7")
+"texture": SubResource("AtlasTexture_ix2m1")
 }],
 "loop": true,
 "name": &"CrouchedRight",
@@ -409,10 +409,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7cl88")
+"texture": SubResource("AtlasTexture_3cn1b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jtp1m")
+"texture": SubResource("AtlasTexture_harob")
 }],
 "loop": false,
 "name": &"CrouchedTurnLeft",
@@ -420,10 +420,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcnc1")
+"texture": SubResource("AtlasTexture_sq1t4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dhub6")
+"texture": SubResource("AtlasTexture_6cf0f")
 }],
 "loop": false,
 "name": &"CrouchedTurnRight",
@@ -564,7 +564,7 @@ limit_bottom = 160
 
 [node name="animatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_55sv2")
-animation = &"AimUpLeft"
+animation = &"CrouchedLeft"
 autoplay = "IdleLeft"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
