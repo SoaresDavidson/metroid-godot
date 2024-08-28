@@ -1,10 +1,9 @@
 extends State
-@onready var samus = $"../.."
-@onready var animated_sprite = $"../../animatedSprite"
 
 
 
 func Enter():
+
 	if "Left" in samus.previous_animation:
 		var animation = samus.previous_animation.replace("Left", "TurnRight")
 		animated_sprite.play(animation)

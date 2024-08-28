@@ -1,21 +1,18 @@
 extends State
-@onready var animated_sprite = $"../../animatedSprite"
-@onready var samus = $"../.."
+
 
 var direction
 
 func Enter():
-	if "Left" in samus.previous_animation:
-		animated_sprite.play("RunningLeft")
-	if "Right" in samus.previous_animation:
-		animated_sprite.play("RunningRight")
+	if not Input.is_action_pressed("up"):
+		checkAnimation("RunningLeft", "RunningRight")
 	
 func PhysicsUpdate(_delta:float):
 	
 	direction = Input.get_axis("left", "right")
+	#função responsável pelo movimento,presente na classe pai:State 
+	move(direction, _delta)
 	
-	samus.velocity.x = move_toward(samus.velocity.x , direction * samus.speed, samus.acceleration * _delta)
-
 	transitionIdle()
 		
 func Exit():
@@ -26,4 +23,15 @@ func Exit():
 	
 func transitionIdle():
 	if not direction:
+		transitioned.emit(self, "idle")
+
+func AimUp():
+	if Input.is_action_pressed("up"):
+		if "Left" in animated_sprite.animation:
+			facing = -1
+			animated_sprite.play("AimUpLeft")
+		if "Right" in animated_sprite.animation:
+			facing = 1
+			animated_sprite.play("AimUpRight")
+	else:
 		transitioned.emit(self, "idle")

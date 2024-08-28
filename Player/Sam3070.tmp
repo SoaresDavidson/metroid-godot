@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bxfkfgejq7opq"]
+[gd_scene load_steps=59 format=3 uid="uid://bxfkfgejq7opq"]
 
 [ext_resource type="Script" path="res://Player/samus.gd" id="1_d35qc"]
 [ext_resource type="Texture2D" uid="uid://b30hsfcw5dyr5" path="res://assets/Samus/SamusAimingUp-Sheet.png" id="2_jyne1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Player/StateMachine/walk.gd" id="5_hh0eq"]
 [ext_resource type="Script" path="res://Player/StateMachine/turn.gd" id="6_q13ig"]
 [ext_resource type="Script" path="res://Player/StateMachine/crouched.gd" id="7_gsyrq"]
+[ext_resource type="Script" path="res://Player/StateMachine/aim_up.gd" id="11_rbc70"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tttb"]
 atlas = ExtResource("2_jyne1")
@@ -225,9 +226,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tqs2x")
 }],
-"loop": false,
+"loop": true,
 "name": &"AimUpTurnLeft",
-"speed": 20.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -236,7 +237,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cmwm3")
 }],
-"loop": false,
+"loop": true,
 "name": &"AimUpTurnRight",
 "speed": 20.0
 }, {
@@ -413,7 +414,7 @@ limit_bottom = 160
 
 [node name="animatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_55sv2")
-animation = &"AimUpTurnLeft"
+animation = &"AimUpTurnRight"
 autoplay = "IdleLeft"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -435,5 +436,8 @@ script = ExtResource("6_q13ig")
 
 [node name="Crouched" type="Node" parent="FSM"]
 script = ExtResource("7_gsyrq")
+
+[node name="AimUp" type="Node" parent="FSM"]
+script = ExtResource("11_rbc70")
 
 [connection signal="animation_finished" from="animatedSprite" to="." method="_on_samus_animations_animation_finished"]

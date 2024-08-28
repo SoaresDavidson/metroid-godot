@@ -20,6 +20,9 @@ func _physics_process(delta):
 	
 	# Atualizar coordenadas
 	move_and_slide()
+	
+	#if Input.is_action_just_pressed("up"):
+		#get_node("FSM").change_state(get_node("FSM").current_state,"AimUp")
 
 func applyGravity(delta):
 	if not is_on_floor():

@@ -1,11 +1,10 @@
 extends State
-@onready var samus = $"../.."
-@onready var animated_sprite = $"../../animatedSprite"
-var direction
-var looking:float
+
+var direction:float
+
 
 func Enter():
-	checkSide()
+	checkAnimation("CrouchedLeft", "CrouchedRight")
 		
 func PhysicsUpdate(_delta:float):
 	direction = Input.get_axis("left", "right")
@@ -26,13 +25,7 @@ func transitionIdle():
 		transitioned.emit(self, "Idle")
 
 func transitionTurn():
-	if direction != looking and direction != 0:
+	if direction != facing and direction != 0:
 		transitioned.emit(self, "Turn")
-
-func checkSide():
-	if "Left" in samus.previous_animation:
-		animated_sprite.play("CrouchedLeft")
-		looking = -1
-	if "Right" in samus.previous_animation:
-		looking = 1
-		animated_sprite.play("CrouchedRight")
+	if direction:
+		transitioned.emit(self, "Walk")

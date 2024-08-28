@@ -1,7 +1,14 @@
 extends Node
 class_name State
 
+@onready var animated_sprite = $"../../animatedSprite"
+@onready var samus = $"../.."
+
+
 signal transitioned
+
+#direção em que a samus está olhando
+var facing:int = -1
 
 func Enter():
 	print(name)
@@ -14,3 +21,14 @@ func PhysicsUpdate(_delta:float):
 	
 func Exit():
 	pass
+
+func move(direction:int, _delta:float):
+	samus.velocity.x = move_toward(samus.velocity.x , direction * samus.speed, samus.acceleration * _delta)
+
+func checkAnimation(animationLeft:String, animationRight:String):
+	if "Left" in samus.previous_animation:
+		facing = -1
+		animated_sprite.play(animationLeft)
+	if "Right" in samus.previous_animation:
+		facing = 1
+		animated_sprite.play(animationRight)

@@ -1,13 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi8ldjji7jenv"]
+[gd_scene load_steps=6 format=3 uid="uid://bi8ldjji7jenv"]
 
+[ext_resource type="Shader" path="res://CRT.gdshader" id="1_apxci"]
 [ext_resource type="PackedScene" uid="uid://bxfkfgejq7opq" path="res://Player/Samus.tscn" id="1_qinfg"]
 [ext_resource type="PackedScene" uid="uid://dsi6hkfaxdsn4" path="res://scenes/main_deck.tscn" id="2_13o7r"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71o6m"]
+shader = ExtResource("1_apxci")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5uddm"]
+shader = ExtResource("1_apxci")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.934
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 3.8e-07
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
 [node name="plataforma_teste" type="Node2D"]
+material = SubResource("ShaderMaterial_71o6m")
 
 [node name="Samus" parent="." instance=ExtResource("1_qinfg")]
 z_index = 1
 position = Vector2(91, 60)
+
+[node name="ColorRect" type="ColorRect" parent="Samus"]
+z_index = 500
+material = SubResource("ShaderMaterial_5uddm")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -190.0
+offset_right = 116.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
 [node name="Main-deck" parent="." instance=ExtResource("2_13o7r")]
 
