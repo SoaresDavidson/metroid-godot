@@ -4,6 +4,7 @@ class_name State
 @onready var animated_sprite = $"../../animatedSprite"
 @onready var samus = $"../.."
 
+var aimState:int 
 
 signal transitioned
 
@@ -32,7 +33,7 @@ func checkAnimation(animationLeft:String, animationRight:String):
 	if "Right" in samus.previous_animation:
 		facing = 1
 		animated_sprite.play(animationRight)
-		
+
 #func AimUp(animationLeft:String, animationRight:String, state:String):
 	#
 	#if Input.is_action_pressed("up"):

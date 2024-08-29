@@ -1,10 +1,7 @@
 extends State
 
 func Enter():
-	print(name)
-	
-func Update(_delta:float):
-	pass
+	checkAnimation("CrouchedAimDownLeft", "CrouchedAimDownRight")
 	
 func PhysicsUpdate(_delta:float):
 	pass
