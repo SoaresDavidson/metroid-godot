@@ -14,15 +14,14 @@ var previous_animation:String
 var previous_state:String
 
 func _physics_process(delta):
-	
+	if Input.is_action_pressed("Aim") and get_node("FSM").current_state != get_node("FSM").get_node("Aim"):
+		#dentro do node FSM tem a função change state e a variavel current state
+		get_node("FSM").change_state(get_node("FSM").current_state,"Aim")
 	# Gravidade vertical
 	applyGravity(delta);
 	
 	# Atualizar coordenadas
 	move_and_slide()
-	
-	#if Input.is_action_just_pressed("up"):
-		#get_node("FSM").change_state(get_node("FSM").current_state,"AimUp")
 
 func applyGravity(delta):
 	if not is_on_floor():
