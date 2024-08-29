@@ -8,6 +8,10 @@ func Enter():
 		
 func PhysicsUpdate(_delta:float):
 	direction = Input.get_axis("left", "right")
+	
+	if Input.is_action_just_pressed("Aim"):
+		transitioned.emit(self, "CrouchedAimUp")
+	
 	samus.velocity.x = move_toward(samus.velocity.x, 0, samus.friction * _delta)
 	#transiciona pra Idle
 	transitionIdle()

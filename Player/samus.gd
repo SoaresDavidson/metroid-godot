@@ -7,18 +7,17 @@ const JUMP_VELOCITY = -400.0
 @onready var animated_sprite = $animatedSprite
 @onready var direction : float = 0.0;
 
-var up:bool = false
-var down:bool = false
-var hold:float = 0
+var aimState:int = 0
 var previous_animation:String
 var previous_state:String
 
 func _physics_process(delta):
-	if Input.is_action_pressed("Aim") and get_node("FSM").current_state != get_node("FSM").get_node("Aim"):
-		#dentro do node FSM tem a função change state e a variavel current state
-		get_node("FSM").change_state(get_node("FSM").current_state,"Aim")
+	
+	#if Input.is_action_pressed("Aim") and get_node("FSM").current_state != get_node("FSM").get_node("Aim") and get_node("FSM").current_state != get_node("FSM").get_node("Walk"):
+		##dentro do node FSM tem a função change state e a variavel current state
+		#get_node("FSM").change_state(get_node("FSM").current_state,"Aim")
 	# Gravidade vertical
-	applyGravity(delta);
+	applyGravity(delta)
 	
 	# Atualizar coordenadas
 	move_and_slide()

@@ -9,15 +9,22 @@ func Enter():
 	#freia
 	samus.velocity.x = 0
 	#checa qual a animação correta para tocar
+	if Input.is_action_pressed("up"):
+		checkAnimation("AimUpLeft", "AimUpRight")
+		return
+		
 	checkAnimation("IdleLeft", "IdleRight")
+	samus.aimState = 0
 
 func PhysicsUpdate(_delta:float):
 	direction = Input.get_axis("left", "right")
 	
-	#AimUp("AimUpLeft", "AimUpRight", name)
+	AimUp()
+	
+	AimMode()
 	
 	transitionCrouched()
-		
+	
 	transitionWalk()
 	
 func Exit():
@@ -26,7 +33,16 @@ func Exit():
 	#guarda o nome do ultimo state
 	samus.previous_state = name
 	
+func AimUp():
+	if pressedUp():
+		transitioned.emit(self, "Idle")
 	
+func AimMode():
+	if pressedAim():
+		if "Down" in samus.previous_animation:
+			transitioned.emit(self, "AimDiagonalDown")
+		transitioned.emit(self, "AimDiagonalUp")
+		
 func transitionWalk():
 	# se na função Enter o state detecta a direção que a samus ta olhando,se em algum momento o 
 	#direction for diferente dessa direção que ela ta olhando ele vai pro state Turn
@@ -38,5 +54,11 @@ func transitionWalk():
 		transitioned.emit(self, "Walk")
 
 func transitionCrouched():
-	if Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed("down") and not Input.is_action_pressed("Aim"):
 		transitioned.emit(self, "Crouched")
+		
+func pressedUp():
+	return Input.is_action_pressed("up") or Input.is_action_just_released("up")
+
+func pressedAim():
+	return Input.is_action_pressed("Aim") or Input.is_action_just_released("Aim")
