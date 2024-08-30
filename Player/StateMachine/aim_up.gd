@@ -21,9 +21,5 @@ func PhysicsUpdate(_delta:float):
 		transitioned.emit(self, "Walk")
 	
 func Exit():
-	#guarda a ultima animação do state
-	samus.previous_animation = animated_sprite.animation
-	#guarda o nome do ultimo state
-	samus.previous_state = name
-	
+	savePreviuos()
 	samus.aimState = 0

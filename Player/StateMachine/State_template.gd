@@ -9,6 +9,7 @@ var aimState:int
 signal transitioned
 
 #direção em que a samus está olhando
+#usado somente para saber quando entrar no state turn
 var facing:int = -1
 
 func Enter():
@@ -34,14 +35,8 @@ func checkAnimation(animationLeft:String, animationRight:String):
 		facing = 1
 		animated_sprite.play(animationRight)
 
-#func AimUp(animationLeft:String, animationRight:String, state:String):
-	#
-	#if Input.is_action_pressed("up"):
-		#if "Left" in animated_sprite.animation:
-			#facing = -1
-			#animated_sprite.play(animationLeft)
-		#if "Right" in animated_sprite.animation:
-			#facing = 1
-			#animated_sprite.play(animationRight)
-	#else:
-		#transitioned.emit(self, state)
+func savePreviuos():
+	#guarda a ultima animação do state
+	samus.previous_animation = animated_sprite.animation
+	#guarda o nome do ultimo state
+	samus.previous_state = name

@@ -36,10 +36,7 @@ func PhysicsUpdate(_delta:float):
 	transitionIdle()
 		
 func Exit():
-	#guarda a ultima animação do state
-	samus.previous_animation = animated_sprite.animation
-	#guarda o nome do ultimo state
-	samus.previous_state = name
+	savePreviuos()
 	
 func transitionIdle():
 	#se não tiver input em direction(direction = 0) transiciona pra idle

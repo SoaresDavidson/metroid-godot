@@ -9,38 +9,45 @@ func Enter():
 	#freia
 	samus.velocity.x = 0
 	#checa qual a animação correta para tocar
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("up") and samus.previous_state != "Crouched":
 		checkAnimation("AimUpLeft", "AimUpRight")
 		return
 		
 	checkAnimation("IdleLeft", "IdleRight")
-	samus.aimState = 0
+
 
 func PhysicsUpdate(_delta:float):
 	direction = Input.get_axis("left", "right")
 	
+	#se o player aperta pra cima samus mirar pra cima
 	AimUp()
-	
+	#ativa o modo mirar samus fica travada em uma diagonal função dos states AimDiagonalUp e AimDiagonalDown
 	AimMode()
-	
+	#ao apertar pra baixo samus se agacha função do state Couched
 	transitionCrouched()
-	
+	#ao aperta esquerda ou direita começa a andar função do state Walk
 	transitionWalk()
 	
 func Exit():
-	#guarda a ultima animação do state
-	samus.previous_animation = animated_sprite.animation
-	#guarda o nome do ultimo state
-	samus.previous_state = name
+	savePreviuos()
 	
 func AimUp():
 	if pressedUp():
-		transitioned.emit(self, "Idle")
-	
+		if samus.previous_state == "Crouched":
+			await get_tree().create_timer(0.125).timeout
+			if Input.is_action_pressed("up"):
+				transitioned.emit(self, "Idle")
+		else:
+			transitioned.emit(self, "Idle")
+
+
 func AimMode():
 	if pressedAim():
-		if "Down" in samus.previous_animation:
+		#por padrão ao ativar o modo mira samus olha pra cima salvo casos onde ela
+		#ja estava olhando para baixo
+		if samus.aimState and samus.previous_state == "Walk":
 			transitioned.emit(self, "AimDiagonalDown")
+			
 		transitioned.emit(self, "AimDiagonalUp")
 		
 func transitionWalk():
@@ -54,8 +61,13 @@ func transitionWalk():
 		transitioned.emit(self, "Walk")
 
 func transitionCrouched():
-	if Input.is_action_just_pressed("down") and not Input.is_action_pressed("Aim"):
+	if Input.is_action_just_pressed("down"):
 		transitioned.emit(self, "Crouched")
+		
+func transitionJump():
+	if Input.is_action_just_pressed("Jump") or not samus.is_on_floor():
+		samus.velocity.y = -400
+		transitioned.emit(self, "StandingJump")
 		
 func pressedUp():
 	return Input.is_action_pressed("up") or Input.is_action_just_released("up")
