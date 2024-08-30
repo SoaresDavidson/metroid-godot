@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://bxfkfgejq7opq"]
+[gd_scene load_steps=140 format=3 uid="uid://bxfkfgejq7opq"]
 
 [ext_resource type="Script" path="res://Player/samus.gd" id="1_d35qc"]
 [ext_resource type="Texture2D" uid="uid://ds480du5swqc" path="res://assets/Samus/SamusAimingDiagonal-Sheet.png" id="2_7fk12"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://Player/StateMachine/state_machine.gd" id="4_niy1a"]
 [ext_resource type="Script" path="res://Player/StateMachine/walk.gd" id="5_hh0eq"]
 [ext_resource type="Script" path="res://Player/StateMachine/turn.gd" id="6_q13ig"]
-[ext_resource type="Texture2D" uid="uid://deulv604abgq0" path="res://assets/Samus/OnAir.png" id="7_60kxu"]
 [ext_resource type="Script" path="res://Player/StateMachine/crouched.gd" id="7_gsyrq"]
 [ext_resource type="Script" path="res://Player/StateMachine/aim_up.gd" id="15_btsop"]
 [ext_resource type="Script" path="res://Player/StateMachine/aim_diagonal_down.gd" id="16_uud47"]
@@ -249,22 +248,6 @@ region = Rect2(108, 0, 36, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qejs"]
 atlas = ExtResource("3_160aw")
 region = Rect2(144, 0, 36, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tj638"]
-atlas = ExtResource("7_60kxu")
-region = Rect2(0, 0, 36, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ip12h"]
-atlas = ExtResource("7_60kxu")
-region = Rect2(36, 0, 36, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7clc6"]
-atlas = ExtResource("7_60kxu")
-region = Rect2(252, 0, 36, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p55bm"]
-atlas = ExtResource("7_60kxu")
-region = Rect2(216, 0, 36, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdaea"]
 atlas = ExtResource("2_eu53g")
@@ -821,28 +804,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tj638")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ip12h")
-}],
-"loop": false,
-"name": &"JumpRisingIdleLeft",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7clc6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p55bm")
-}],
-"loop": false,
-"name": &"JumpRisingIdleRight",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_sdaea")
 }, {
 "duration": 1.0,
@@ -1064,7 +1025,7 @@ limit_bottom = 160
 
 [node name="animatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_55sv2")
-animation = &"JumpRisingIdleRight"
+animation = &"CrouchedAimDownTurnRight"
 autoplay = "IdleLeft"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
