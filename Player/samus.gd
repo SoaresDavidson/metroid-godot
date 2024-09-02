@@ -2,21 +2,21 @@ extends CharacterBody2D
 
 @export var acceleration:float
 
-const JUMP_VELOCITY = -400.0
+#const JUMP_VELOCITY = -400.0
 
 @export var speed = 100.0
 
 @export_category("Jump Parameters")
 @export var Jump_Buffer_Time:float = .1
-@export var Jump_Gravity:float = 1000
-@export var Fall_Gravity: float = 1250
+@export var Jump_Velocity:float = -275
+@export var Jump_Gravity:float = 500
+@export var Fall_Gravity: float = 600
 @export var Coyote_Time:float = 0.25
 var Jump_Avaliable:bool = true
 var Jump_Buffer:bool = false
 
-
 @onready var animated_sprite = $animatedSprite
-@onready var direction : float = 0.0;
+@onready var direction : int
 
 var aimState:int = 0
 
@@ -27,7 +27,8 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-
+	#direction = Input.get_axis("left", "right")
+	print(velocity.y)
 	
 	manageJump()
 	
@@ -51,12 +52,13 @@ func applyGravity(delta):
 			Jump_Buffer = false
 			
 func Jump():
-	get_node("FSM").change_state(get_node("FSM").current_state, "StandingJump")
-	velocity.y = JUMP_VELOCITY
-	Jump_Avaliable = false
-
+	
+	velocity.y = Jump_Velocity
+	get_node("FSM").change_state(get_node("FSM").current_state, "BallJump")
+	
 func manageJump() -> void:
 	if Input.is_action_just_pressed("Jump"):
+		Jump_Avaliable = false
 		if Jump_Avaliable:
 			Jump()
 		else:
@@ -71,6 +73,3 @@ func Coyote_Timeout():
 
 func on_jump_biffer_timeout() -> void:
 	Jump_Buffer = false
-
-func handleJumpAnimations():
-	get_node("FSM/Idle").checkAnimation("CrouchedAimUpLeft", "CrouchedAimUpRight")

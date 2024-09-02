@@ -66,7 +66,6 @@ func transitionCrouched():
 		
 func transitionJump():
 	if Input.is_action_just_pressed("Jump") or not samus.is_on_floor():
-		samus.velocity.y = -400
 		transitioned.emit(self, "StandingJump")
 		
 func pressedUp():
