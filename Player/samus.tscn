@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://bxfkfgejq7opq"]
+[gd_scene load_steps=164 format=3 uid="uid://bxfkfgejq7opq"]
 
 [ext_resource type="Script" path="res://Player/samus.gd" id="1_d35qc"]
 [ext_resource type="Texture2D" uid="uid://ds480du5swqc" path="res://assets/Samus/SamusAimingDiagonal-Sheet.png" id="2_7fk12"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Player/StateMachine/idle.gd" id="4_6wnlj"]
 [ext_resource type="Script" path="res://Player/StateMachine/state_machine.gd" id="4_niy1a"]
 [ext_resource type="Script" path="res://Player/StateMachine/walk.gd" id="5_hh0eq"]
+[ext_resource type="Texture2D" uid="uid://ckhf6wmfu3rcy" path="res://assets/Samus/BallJump.png" id="5_uym44"]
 [ext_resource type="Script" path="res://Player/StateMachine/turn.gd" id="6_q13ig"]
 [ext_resource type="Texture2D" uid="uid://deulv604abgq0" path="res://assets/Samus/OnAir.png" id="7_60kxu"]
 [ext_resource type="Script" path="res://Player/StateMachine/crouched.gd" id="7_gsyrq"]
@@ -137,6 +138,78 @@ region = Rect2(72, 0, 36, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6281s"]
 atlas = ExtResource("2_jyne1")
 region = Rect2(108, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nat5"]
+atlas = ExtResource("5_uym44")
+region = Rect2(288, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haw5b"]
+atlas = ExtResource("5_uym44")
+region = Rect2(252, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i21k"]
+atlas = ExtResource("5_uym44")
+region = Rect2(216, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okvwr"]
+atlas = ExtResource("5_uym44")
+region = Rect2(180, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5lgs"]
+atlas = ExtResource("5_uym44")
+region = Rect2(144, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tipqa"]
+atlas = ExtResource("5_uym44")
+region = Rect2(108, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2345o"]
+atlas = ExtResource("5_uym44")
+region = Rect2(72, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6y6l"]
+atlas = ExtResource("5_uym44")
+region = Rect2(36, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n3sg"]
+atlas = ExtResource("5_uym44")
+region = Rect2(0, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6tkx"]
+atlas = ExtResource("5_uym44")
+region = Rect2(324, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nfdl"]
+atlas = ExtResource("5_uym44")
+region = Rect2(360, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlc1l"]
+atlas = ExtResource("5_uym44")
+region = Rect2(396, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwor3"]
+atlas = ExtResource("5_uym44")
+region = Rect2(432, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgmna"]
+atlas = ExtResource("5_uym44")
+region = Rect2(468, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cguxf"]
+atlas = ExtResource("5_uym44")
+region = Rect2(504, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdo6g"]
+atlas = ExtResource("5_uym44")
+region = Rect2(540, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgnke"]
+atlas = ExtResource("5_uym44")
+region = Rect2(576, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q4p5"]
+atlas = ExtResource("5_uym44")
+region = Rect2(612, 0, 36, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x73fp"]
 atlas = ExtResource("2_sfelu")
@@ -657,6 +730,70 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8nat5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haw5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i21k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okvwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5lgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tipqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2345o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6y6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n3sg")
+}],
+"loop": true,
+"name": &"BallJumpLeft",
+"speed": 32.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6tkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nfdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlc1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwor3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgmna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cguxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdo6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgnke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q4p5")
+}],
+"loop": true,
+"name": &"BallJumpRight",
+"speed": 32.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x73fp")
 }],
 "loop": true,
@@ -1057,14 +1194,16 @@ size = Vector2(20, 0.5)
 
 [node name="Samus" type="CharacterBody2D"]
 script = ExtResource("1_d35qc")
-acceleration = 500.0
+acceleration = 1000.0
+speed = 200.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_top = 0
 limit_bottom = 160
 
 [node name="animatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_55sv2")
-animation = &"JumpRisingIdleRight"
+animation = &"RunningAimDownDiagonalLeft"
 autoplay = "IdleLeft"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
